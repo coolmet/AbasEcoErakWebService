@@ -9,13 +9,13 @@
       "name": "abas.edp",
       "type": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
       "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas",
-      "sourceMethod": "getEdp()"
+      "sourceMethod": "public com.abas.ecoerak.ConfigPropertiesAbas.Edp getEdp() "
     },
     {
       "name": "abas.s3",
       "type": "com.abas.ecoerak.ConfigPropertiesAbas$S3",
       "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas",
-      "sourceMethod": "getS3()"
+      "sourceMethod": "public com.abas.ecoerak.ConfigPropertiesAbas.S3 getS3() "
     },
     {
       "name": "server",
@@ -26,19 +26,19 @@
       "name": "server.servlet",
       "type": "com.abas.ecoerak.ConfigPropertiesServer$Servlet",
       "sourceType": "com.abas.ecoerak.ConfigPropertiesServer",
-      "sourceMethod": "getServlet()"
+      "sourceMethod": "public com.abas.ecoerak.ConfigPropertiesServer.Servlet getServlet() "
     },
     {
       "name": "server.servlet.session",
       "type": "com.abas.ecoerak.ConfigPropertiesServer$Servlet$Session",
       "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Servlet",
-      "sourceMethod": "getSession()"
+      "sourceMethod": "public com.abas.ecoerak.ConfigPropertiesServer.Servlet.Session getSession() "
     },
     {
       "name": "server.token",
       "type": "com.abas.ecoerak.ConfigPropertiesServer$Token",
       "sourceType": "com.abas.ecoerak.ConfigPropertiesServer",
-      "sourceMethod": "getToken()"
+      "sourceMethod": "public com.abas.ecoerak.ConfigPropertiesServer.Token getToken() "
     },
     {
       "name": "spring",
@@ -49,7 +49,7 @@
       "name": "spring.mvc",
       "type": "com.abas.ecoerak.ConfigPropertiesSpring$Mvc",
       "sourceType": "com.abas.ecoerak.ConfigPropertiesSpring",
-      "sourceMethod": "getMvc()"
+      "sourceMethod": "public com.abas.ecoerak.ConfigPropertiesSpring.Mvc getMvc() "
     },
     {
       "name": "users",
@@ -61,14 +61,12 @@
     {
       "name": "abas.edp.fl",
       "type": "java.lang.Boolean",
-      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
-      "defaultValue": false
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
     },
     {
       "name": "abas.edp.fopmode",
       "type": "java.lang.Boolean",
-      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
-      "defaultValue": false
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
     },
     {
       "name": "abas.edp.lang",
@@ -83,8 +81,7 @@
     {
       "name": "abas.edp.port",
       "type": "java.lang.Integer",
-      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
-      "defaultValue": 0
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
     },
     {
       "name": "abas.edp.serverip",
@@ -94,8 +91,7 @@
     {
       "name": "abas.edp.sessiontimeout",
       "type": "java.lang.Integer",
-      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
-      "defaultValue": 0
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
     },
     {
       "name": "abas.s3.base-dir",
@@ -120,8 +116,7 @@
     {
       "name": "server.port",
       "type": "java.lang.Integer",
-      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer",
-      "defaultValue": 0
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer"
     },
     {
       "name": "server.servlet.session.timeout",
@@ -131,8 +126,7 @@
     {
       "name": "server.token.expiration-time",
       "type": "java.lang.Long",
-      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Token",
-      "defaultValue": 0
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Token"
     },
     {
       "name": "server.token.header-string",
