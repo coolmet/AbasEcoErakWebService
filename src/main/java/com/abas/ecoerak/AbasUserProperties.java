@@ -9,7 +9,7 @@ import com.abas.ecoerak.model.AbasUserDetailsModel;
 
 @ConfigurationProperties("users")
 public class AbasUserProperties
-{
+{ 
 	private final List<AbasUserDetailsModel> admins=new ArrayList<>();
 	private final List<AbasUserDetailsModel> rests=new ArrayList<>();
 	
