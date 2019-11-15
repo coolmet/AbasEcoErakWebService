@@ -1,0 +1,174 @@
+{
+  "groups": [
+    {
+      "name": "abas",
+      "type": "com.abas.ecoerak.ConfigPropertiesAbas",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas"
+    },
+    {
+      "name": "abas.edp",
+      "type": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas",
+      "sourceMethod": "getEdp()"
+    },
+    {
+      "name": "abas.s3",
+      "type": "com.abas.ecoerak.ConfigPropertiesAbas$S3",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas",
+      "sourceMethod": "getS3()"
+    },
+    {
+      "name": "server",
+      "type": "com.abas.ecoerak.ConfigPropertiesServer",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer"
+    },
+    {
+      "name": "server.servlet",
+      "type": "com.abas.ecoerak.ConfigPropertiesServer$Servlet",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer",
+      "sourceMethod": "getServlet()"
+    },
+    {
+      "name": "server.servlet.session",
+      "type": "com.abas.ecoerak.ConfigPropertiesServer$Servlet$Session",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Servlet",
+      "sourceMethod": "getSession()"
+    },
+    {
+      "name": "server.token",
+      "type": "com.abas.ecoerak.ConfigPropertiesServer$Token",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer",
+      "sourceMethod": "getToken()"
+    },
+    {
+      "name": "spring",
+      "type": "com.abas.ecoerak.ConfigPropertiesSpring",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesSpring"
+    },
+    {
+      "name": "spring.mvc",
+      "type": "com.abas.ecoerak.ConfigPropertiesSpring$Mvc",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesSpring",
+      "sourceMethod": "getMvc()"
+    },
+    {
+      "name": "users",
+      "type": "com.abas.ecoerak.AbasUserProperties",
+      "sourceType": "com.abas.ecoerak.AbasUserProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "abas.edp.fl",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
+      "defaultValue": false
+    },
+    {
+      "name": "abas.edp.fopmode",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
+      "defaultValue": false
+    },
+    {
+      "name": "abas.edp.lang",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
+    },
+    {
+      "name": "abas.edp.password",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
+    },
+    {
+      "name": "abas.edp.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
+      "defaultValue": 0
+    },
+    {
+      "name": "abas.edp.serverip",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp"
+    },
+    {
+      "name": "abas.edp.sessiontimeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$Edp",
+      "defaultValue": 0
+    },
+    {
+      "name": "abas.s3.base-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$S3"
+    },
+    {
+      "name": "abas.s3.dir",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$S3"
+    },
+    {
+      "name": "abas.s3.mandant",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesAbas$S3"
+    },
+    {
+      "name": "server.connection-timeout",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer"
+    },
+    {
+      "name": "server.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer",
+      "defaultValue": 0
+    },
+    {
+      "name": "server.servlet.session.timeout",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Servlet$Session"
+    },
+    {
+      "name": "server.token.expiration-time",
+      "type": "java.lang.Long",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Token",
+      "defaultValue": 0
+    },
+    {
+      "name": "server.token.header-string",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Token"
+    },
+    {
+      "name": "server.token.prefix",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Token"
+    },
+    {
+      "name": "server.token.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesServer$Token"
+    },
+    {
+      "name": "spring.mvc.locale",
+      "type": "java.lang.String",
+      "sourceType": "com.abas.ecoerak.ConfigPropertiesSpring$Mvc"
+    },
+    {
+      "name": "users.admins",
+      "type": "java.util.List<com.abas.ecoerak.model.AbasUserDetailsModel>",
+      "sourceType": "com.abas.ecoerak.AbasUserProperties"
+    },
+    {
+      "name": "users.rests",
+      "type": "java.util.List<com.abas.ecoerak.model.AbasUserDetailsModel>",
+      "sourceType": "com.abas.ecoerak.AbasUserProperties"
+    },
+    {
+      "name": "users.users",
+      "type": "java.util.List<com.abas.ecoerak.model.AbasUserDetailsModel>",
+      "sourceType": "com.abas.ecoerak.AbasUserProperties"
+    }
+  ],
+  "hints": []
+}

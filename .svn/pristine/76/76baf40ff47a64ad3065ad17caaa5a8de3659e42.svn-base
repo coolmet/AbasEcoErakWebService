@@ -1,0 +1,149 @@
+package com.abas.ecoerak.model;
+
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.xml.txw2.annotation.XmlElement;
+
+@Entity
+@XmlElement
+public class Line
+{
+	@Id
+	int nwinsiparisDetID;
+	String BirimCinsi;
+	String BirimFiyat;
+	String HBirim;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd", timezone="Europe/Istanbul")
+	Date IlkTeslimTarihi;
+	String LotTanim;
+	String AnaKumasOzelNot;
+	String IsEmriNo;
+	String HModelAdi;
+	String HModelKodu;
+	double Miktar;
+	
+	public int getNwinsiparisDetID()
+	{
+		return nwinsiparisDetID;
+	}
+	
+	public void setNwinsiparisDetID(int nwinsiparisDetID)
+	{
+		this.nwinsiparisDetID=nwinsiparisDetID;
+	}
+	
+	public String getBirimCinsi()
+	{
+		return BirimCinsi;
+	}
+	
+	public void setBirimCinsi(String birimCinsi)
+	{
+		BirimCinsi=birimCinsi;
+	}
+	
+	public String getBirimFiyat()
+	{
+		return BirimFiyat;
+	}
+	
+	public void setBirimFiyat(String birimFiyat)
+	{
+		BirimFiyat=birimFiyat;
+	}
+	
+	public String getHBirim()
+	{
+		return HBirim;
+	}
+	
+	public void setHBirim(String hBirim)
+	{
+		HBirim=hBirim;
+	}
+	
+	public Date getIlkTeslimTarihi()
+	{
+		return IlkTeslimTarihi;
+	}
+	
+	public void setIlkTeslimTarihi(Date ilkTeslimTarihi)
+	{
+		IlkTeslimTarihi=ilkTeslimTarihi;
+	}
+	
+	public String getLotTanim()
+	{
+		return LotTanim;
+	}
+	
+	public void setLotTanim(String lotTanim)
+	{
+		LotTanim=lotTanim;
+	}
+	
+	public String getAnaKumasOzelNot()
+	{
+		return AnaKumasOzelNot;
+	}
+	
+	public void setAnaKumasOzelNot(String anaKumasOzelNot)
+	{
+		AnaKumasOzelNot=anaKumasOzelNot;
+	}
+	
+	public String getIsEmriNo()
+	{
+		return IsEmriNo;
+	}
+	
+	public void setIsEmriNo(String isEmriNo)
+	{
+		IsEmriNo=isEmriNo;
+	}
+	
+	public String getHModelAdi()
+	{
+		return HModelAdi;
+	}
+	
+	public void setHModelAdi(String hModelAdi)
+	{
+		HModelAdi=hModelAdi;
+	}
+	
+	public String getHModelKodu()
+	{
+		return HModelKodu;
+	}
+	
+	public void setHModelKodu(String hModelKodu)
+	{
+		HModelKodu=hModelKodu;
+	}
+	
+	public double getMiktar()
+	{
+		return Miktar;
+	}
+	
+	public void setMiktar(double miktar)
+	{
+		Miktar=miktar;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Line [nwinsiparisDetID="+nwinsiparisDetID+", BirimCinsi="+BirimCinsi+", BirimFiyat="+BirimFiyat+", HBirim="+HBirim+", IlkTeslimTarihi="+IlkTeslimTarihi+", LotTanim="+LotTanim+", AnaKumasOzelNot="+AnaKumasOzelNot+", IsEmriNo="+IsEmriNo+", HModelAdi="+HModelAdi+", HModelKodu="
+		+HModelKodu+", Miktar="+Miktar+"]";
+	}
+	
+}

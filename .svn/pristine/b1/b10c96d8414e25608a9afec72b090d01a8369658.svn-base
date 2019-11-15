@@ -1,0 +1,97 @@
+package com.abas.ecoerak.model;
+
+import java.util.Arrays;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@Entity
+public class User
+{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
+	private long Id;
+	@Column
+	private String UserName;
+	@Column
+	String FirstName;
+	@Column
+	String LastName;
+	@Column
+	String Lang;
+	@Column
+	String Token;
+	
+	public long getId()
+	{
+		return Id;
+	}
+	
+	public void setId(long id)
+	{
+		Id=id;
+	}
+	
+	public String getUserName()
+	{
+		return UserName;
+	}
+	
+	public void setUserName(String userName)
+	{
+		UserName=userName;
+	}
+	
+	public String getFirstName()
+	{
+		return FirstName;
+	}
+	
+	public void setFirstName(String firstName)
+	{
+		FirstName=firstName;
+	}
+	
+	public String getLastName()
+	{
+		return LastName;
+	}
+	
+	public void setLastName(String lastName)
+	{
+		LastName=lastName;
+	}
+	
+	public String getLang()
+	{
+		return Lang;
+	}
+	
+	public void setLang(String lang)
+	{
+		Lang=lang;
+	}
+	
+	public String getToken()
+	{
+		return Token;
+	}
+	
+	public void setToken(String token)
+	{
+		Token=token;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "User [Id="+Id+", UserName="+UserName+", FirstName="+FirstName+", LastName="+LastName+", Lang="+Lang+", Token="+Token+"]";
+	}
+	
+}

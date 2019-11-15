@@ -1,0 +1,11 @@
+package com.abas.ecoerak.service;
+
+import com.abas.ecoerak.model.ExecResult;
+import com.abas.ecoerak.model.Master;
+
+public interface EdpService
+{
+	ExecResult addOrder(Master master);
+	
+	ExecResult addOrder(String jsonData);
+}

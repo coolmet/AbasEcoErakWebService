@@ -1,0 +1,186 @@
+package com.abas.ecoerak.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
+import com.sun.xml.txw2.annotation.XmlElement;
+
+@Entity
+@XmlElement
+public class Distribution
+{
+	@Id
+	int nwinsiparisDetID;
+	String KartKodu;
+	String SKU;
+	String Beden;
+	double Boy;
+	double MusteriAdetY;
+	String YikamaTalimati;
+	String Dil;
+	String FirmaAdi;
+	String UrunTanimi;
+	String UlkeKodu;
+	String Alan1;
+	String URETIMYERI;
+	String UretilenAdet;
+	String Adi;
+	
+	public int getNwinsiparisDetID()
+	{
+		return nwinsiparisDetID;
+	}
+	
+	public void setNwinsiparisDetID(int nwinsiparisDetID)
+	{
+		this.nwinsiparisDetID=nwinsiparisDetID;
+	}
+	
+	public String getKartKodu()
+	{
+		return KartKodu;
+	}
+	
+	public void setKartKodu(String kartKodu)
+	{
+		KartKodu=kartKodu;
+	}
+	
+	public String getSKU()
+	{
+		return SKU;
+	}
+	
+	public void setSKU(String sKU)
+	{
+		SKU=sKU;
+	}
+	
+	public String getBeden()
+	{
+		return Beden;
+	}
+	
+	public void setBeden(String beden)
+	{
+		Beden=beden;
+	}
+	
+	public double getBoy()
+	{
+		return Boy;
+	}
+	
+	public void setBoy(double boy)
+	{
+		Boy=boy;
+	}
+	
+	public double getMusteriAdetY()
+	{
+		return MusteriAdetY;
+	}
+	
+	public void setMusteriAdetY(double musteriAdetY)
+	{
+		MusteriAdetY=musteriAdetY;
+	}
+	
+	public String getYikamaTalimati()
+	{
+		return YikamaTalimati;
+	}
+	
+	public void setYikamaTalimati(String yikamaTalimati)
+	{
+		YikamaTalimati=yikamaTalimati;
+	}
+	
+	public String getDil()
+	{
+		return Dil;
+	}
+	
+	public void setDil(String dil)
+	{
+		Dil=dil;
+	}
+	
+	public String getFirmaAdi()
+	{
+		return FirmaAdi;
+	}
+	
+	public void setFirmaAdi(String firmaAdi)
+	{
+		FirmaAdi=firmaAdi;
+	}
+	
+	public String getUrunTanimi()
+	{
+		return UrunTanimi;
+	}
+	
+	public void setUrunTanimi(String urunTanimi)
+	{
+		UrunTanimi=urunTanimi;
+	}
+	
+	public String getUlkeKodu()
+	{
+		return UlkeKodu;
+	}
+	
+	public void setUlkeKodu(String ulkeKodu)
+	{
+		UlkeKodu=ulkeKodu;
+	}
+	
+	public String getAlan1()
+	{
+		return Alan1;
+	}
+	
+	public void setAlan1(String alan1)
+	{
+		Alan1=alan1;
+	}
+	
+	public String getURETIMYERI()
+	{
+		return URETIMYERI;
+	}
+	
+	public void setURETIMYERI(String uRETIMYERI)
+	{
+		URETIMYERI=uRETIMYERI;
+	}
+	
+	public String getUretilenAdet()
+	{
+		return UretilenAdet;
+	}
+	
+	public void setUretilenAdet(String uretilenAdet)
+	{
+		UretilenAdet=uretilenAdet;
+	}
+	
+	public String getAdi()
+	{
+		return Adi;
+	}
+	
+	public void setAdi(String adi)
+	{
+		Adi=adi;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Distribution [nwinsiparisDetID="+nwinsiparisDetID+", KartKodu="+KartKodu+", SKU="+SKU+", Beden="+Beden+", Boy="+Boy+", MusteriAdetY="+MusteriAdetY+", YikamaTalimati="+YikamaTalimati+", Dil="+Dil+", FirmaAdi="+FirmaAdi+", UrunTanimi="+UrunTanimi+", UlkeKodu="+UlkeKodu+", Alan1="
+		+Alan1+", URETIMYERI="+URETIMYERI+", UretilenAdet="+UretilenAdet+", Adi="+Adi+"]";
+	}
+	
+}

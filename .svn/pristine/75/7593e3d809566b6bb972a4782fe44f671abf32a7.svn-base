@@ -1,0 +1,88 @@
+package com.abas.ecoerak.security;
+
+import io.jsonwebtoken.Jwts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.stereotype.Service;
+import com.abas.ecoerak.AbasUserProperties;
+import com.abas.ecoerak.SprinBootAppConfiguration;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import static com.abas.ecoerak.security.SecurityConstants.*;
+import static com.abas.ecoerak.security.SecurityConstants.HEADER_STRING;
+import static com.abas.ecoerak.security.SecurityConstants.SECRET;
+import static com.abas.ecoerak.security.SecurityConstants.TOKEN_PREFIX;
+
+public class JWTAuthorizationFilter extends BasicAuthenticationFilter
+{
+	Logger LOGGER=LoggerFactory.getLogger(SprinBootAppConfiguration.class);
+	
+	public JWTAuthorizationFilter(AuthenticationManager authManager)
+	{
+		super(authManager);
+	}
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest req,
+	                                HttpServletResponse res,
+	                                FilterChain chain) throws IOException,ServletException
+	{
+		String header=req.getHeader(HEADER_STRING);
+		LOGGER.info("header-2>>>>>>>>>"+header);
+		if(header==null||!header.startsWith(TOKEN_PREFIX))
+		{
+			chain.doFilter(req,res);
+			return;
+		}
+		UsernamePasswordAuthenticationToken authentication=getAuthentication(req);
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		chain.doFilter(req,res);
+	}
+	
+	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request)
+	{
+		String token=request.getHeader(HEADER_STRING);
+		LOGGER.info("token-2>>>>>>>>>"+token);
+		if(token!=null)
+		{
+			// parse the token.
+			String user_auth=Jwts.parser()
+			                     .setSigningKey(SECRET.getBytes())
+			                     .parseClaimsJws(token.replace(TOKEN_PREFIX,""))
+			                     .getBody()
+			                     .getSubject();
+			LOGGER.info("token-2-user_auth>>>>>>>>>"+user_auth);
+			
+			if(user_auth!=null)
+			{
+				String[] auths=user_auth.substring(user_auth.indexOf("^")+1).split(";");
+				List<GrantedAuthority> grantedAuthorities=new ArrayList<GrantedAuthority>();
+				for(String auth:auths)
+				{
+					grantedAuthorities.add(new SimpleGrantedAuthority(auth));
+				}
+				return new UsernamePasswordAuthenticationToken(user_auth.substring(0,user_auth.indexOf("^")),null,grantedAuthorities);
+			}
+			return null;
+		}
+		return null;
+	}
+}

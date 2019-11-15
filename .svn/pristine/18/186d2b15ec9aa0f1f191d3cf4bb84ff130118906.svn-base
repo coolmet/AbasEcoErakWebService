@@ -1,0 +1,121 @@
+package com.abas.ecoerak.service.impl;
+
+import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.abas.ecoerak.ConfigPropertiesAbas;
+import com.abas.ecoerak.SprinBootAppConfiguration;
+import com.abas.ecoerak.model.AbasOrder;
+import com.abas.ecoerak.model.ExecResult;
+import com.abas.ecoerak.service.AbasMobileUtils;
+import com.abas.ecoerak.service.EdpService;
+import com.abas.ecoerak.service.EdpSessionService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.abas.ceks.jedp.EDPEditor;
+import de.abas.ceks.jedp.EDPMessage;
+
+@Service
+@Transactional(rollbackFor=Exception.class)
+public class EdpServiceImpl implements EdpService
+{
+	@Autowired
+	private ConfigPropertiesAbas configAbas;
+	
+	@Autowired
+	EdpSessionService edpSessionService;
+	
+	@Autowired
+	AbasMobileUtils abasMobileUtils;
+	
+	Logger LOGGER=LoggerFactory.getLogger(SprinBootAppConfiguration.class);
+	
+	@Override
+	public ExecResult addOrder(AbasOrder abasOrder)
+	{
+		ExecResult er=new ExecResult();
+		try
+		{
+			er=this.addOrder(new ObjectMapper().writeValueAsString(abasOrder));
+		}
+		catch(Exception e)
+		{
+			er.isSuccess=false;
+			er.message=abasMobileUtils.exceptionMessage(e);
+			er.messageLong=abasMobileUtils.exceptionMessageDetails(e);
+		}
+		return er;
+	}
+	
+	@Override
+	public ExecResult addOrder(String jsonData)
+	{
+		ExecResult er=new ExecResult();
+		EDPEditor EDPEDIT=null;
+		ArrayList<EDPMessage> edpMessages=new ArrayList<EDPMessage>();
+		if(edpSessionService.EDPSESSION_START())
+		{
+			for(int i=0;i<1;i++)
+			{
+				if(edpSessionService.EDPSESSION_START())
+				{
+					try
+					{
+						// ^^^^^^^^
+						try
+						{
+							if(EDPEDIT!=null&&EDPEDIT.isActive())
+							{
+								EDPEDIT.endEditCancel();
+							}
+						}
+						catch(Exception rt)
+						{
+							EDPEDIT=null;
+						}
+						finally
+						{
+							if(EDPEDIT==null)
+							{
+								EDPEDIT=edpSessionService.SESSION.createEditor();
+								EDPEDIT.resetErrorMessageListener();
+								EDPEDIT.setErrorMessageListener(edpSessionService.edpMessageListener(edpMessages));
+								EDPEDIT.setStatusMessageListener(edpSessionService.edpMessageListener(edpMessages));
+							}
+						}
+						// ^^^^^^^^
+						EDPEDIT=edpSessionService.SESSION.createEditor();
+						EDPEDIT.beginEditCmd("(Infosystem)","WSERAKSIPARIS ow1");
+						EDPEDIT.setFText("yerakdata",jsonData);
+						EDPEDIT.setFieldVal("bstart","CLICK");
+						er.isSuccess=abasMobileUtils.booleanValue(EDPEDIT.getFieldVal("yiseraksuccess"));
+						er.message=EDPEDIT.getFieldVal("yerakmsg");
+						er.messageLong=EDPEDIT.getFieldVal("yerakmsgdetail");
+						EDPEDIT.endEditCancel();
+						
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+						LOGGER.info(abasMobileUtils.exceptionMessage(e));
+						LOGGER.debug(abasMobileUtils.exceptionMessageDetails(e));
+						er.isSuccess=false;
+						er.message=abasMobileUtils.exceptionMessage(e);
+						er.messageLong=abasMobileUtils.exceptionMessageDetails(e);
+					}
+				}
+			}
+			edpSessionService.EDPSESSION_END();
+		}
+		else
+		{
+			er.isSuccess=false;
+			er.message="Bağlantı Hatası";
+			er.messageLong="Bağlantı Hatası ..."+"{"+configAbas.getEdp().getServerip()+":"+configAbas.getEdp().getPort()+"/"+configAbas.getS3().getMandant()+"}";
+		}
+		return er;
+	}
+	
+}
