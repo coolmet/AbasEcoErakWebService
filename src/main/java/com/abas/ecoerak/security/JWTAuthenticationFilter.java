@@ -90,7 +90,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		u2.firstName="";
 		u2.lang="TR";
 		u2.lastName="";
-		u2.token=token;
+		u2.token=tokenService.getPrefix()+token;
 		res.addHeader("User",new ObjectMapper().writeValueAsString(u2));
+		//
+		res.getWriter().write(new ObjectMapper().writeValueAsString(u2));
+		res.getWriter().flush();
+		res.getWriter().close();
 	}
 }
